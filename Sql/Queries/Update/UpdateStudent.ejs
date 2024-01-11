@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Update Form </h1>
+
+    <form action="" method="post">
+        <input type="hidden" value="<%= student[0].id%>">
+        <input type="text" name="name" value="<%= student[0].name %>" placeholder="Enter Your Name" required> <br> <br>
+        <input type="email" name="email" value="<%= student[0].email %>" placeholder="Enter Your Email" required> <br> <br>
+        <input type="number" name="mno" value="<%= student[0].mno %>" placeholder="Enter Your Mobile Number" required> <br> <br>
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>

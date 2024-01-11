@@ -1,0 +1,38 @@
+<%- include('../partials/header') %>
+
+<h1>  Update Your Details</h1>
+<%if(massage){%> <h3 style="color: red;"><%=massage%></h3> <%}%>      
+<div style="width: 50%;margin-left: 50px;">
+<form action="/users/updatedata?id=<%=data[0].id%>" method="post"  enctype="multipart/form-data" >
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="<%=data[0].name%>" placeholder="Enter name">
+      </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" name="email" value="<%=data[0].email%>" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" name="password" id="exampleInputPassword1" required placeholder="Enter Old Password">
+    </div>
+    <div class="form-group">
+      <label for="newpassword">New Password</label>
+      <input type="password" class="form-control" name="newpassword" id="newpassword"  placeholder="Enter New Password">
+    </div>
+    <div class="form-group">
+      <label for="con_password">Confirm New Password</label>
+      <input type="password" class="form-control" name="con_password" id="con_password" placeholder="Confirm New Password">
+    </div>
+    <div class="form-group">
+        <label for="image">Profile_Pic : </label>
+        <input type="file"  name="profile_pic"/><img src="uploaded/images/<%=data[0].profile_pic%>" width="70px" alt="">
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a href="/homepage" class="btn btn-outline-danger">Cancle</a>
+  </form>
+</div>
+
+
+
+<%- include('../partials/footer') %>

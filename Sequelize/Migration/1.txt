@@ -1,0 +1,12 @@
+npx sequelize-cli model:generate --name Users --attributes name:string,email:string 
+
+npm sequelize-cli db:migrate
+
+npx sequelize-cli db:migrate:undo For Undo || All for All
+
+
+npx sequelize-cli db:migrate:undo --name 20231018100607-create-database.js  ||| Name Wise Undo
+
+
+
+ npx sequelize-cli db:migrate:status For Migration status

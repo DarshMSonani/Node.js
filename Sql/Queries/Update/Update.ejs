@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+</head>
+<body>
+    <h1>Student List</h1>
+    <table border="1" width="100%">
+
+    <tr>
+        <th>S.No</th>
+        <th>Name</th>
+        <th>Emai</th>
+        <th>Mobile Number</th>
+        <th>Action</th>
+    </tr>
+
+    <!-- <%= %> For Single Variable -->
+    <!-- <%- %> For Arry And Object -->
+    <!-- <% %> For Loops -->
+
+    <% if(student.length > 0) { %>
+
+        <% for(let i = 0; i < student.length; i++) { %>
+            <tr>
+                <td><%- student[i].sr %></td>
+                <td><%- student[i].name %></td>
+                <td><%- student[i].email %></td>
+                <td><%- student[i].mno %></td>
+                <td>
+                    <a href="/delete-recored?id=<%- student[i].sr%>">Delete</a> <span> |</span>
+                    <a href="/update-recored?id=<%- student[i].sr%>">Update</a>
+                </td>
+            </tr>
+        <% } %>
+        
+        <% } else { %>
+            <tr>
+                <td colspan="4">Data Not Found!</td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>

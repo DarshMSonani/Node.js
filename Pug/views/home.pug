@@ -1,0 +1,77 @@
+//- extend layout
+mixin userInfo (data)
+    .info 
+        .name= data.name 
+        .email= data.email
+    h1= data.name
+    h1= data.name
+//- block content
+html 
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+        style. 
+          h1{color:red}
+    body 
+    h1 Hello name- #{name}
+    include header 
+
+- const person = {name:"Ram", email:"ram@ram.com"} //- For Mixin
++userInfo(person)
+
+- const person1 = {name:"Ram1", email:"ram1@ram.com"}
++userInfo(person1)
+
+div.container
+        div.row form data
+        | Hello
+        | Hello 1
+        | Hello 2
+        
+div.lal
+
+- const bloges1 = ["Node", "Angular", "Php", "React"];
+each n,i in bloges1
+    p=i+"="+n 
+
+h2 Blog List
+
+- const bloglist = {"id":2, "text": "Node"};
+for n,i in bloglist 
+    p=n
+
+//- If
+
+- let marks = 12
+
+if marks 
+    h2 Yes Marks
+if marks == 12
+    h2 Marks Is Good
+else 
+    h2 Marks Is Bed
+
+//- Switch
+- const day = "sun"
+
+case day    
+    when "mon"
+        p Monday
+    when "sun"
+        p Sunday
+    default 
+        p Empty
+
+//-  Script tag
+
+script. 
+    console.log("Yse");
+    var test = "data"
+    console.log(test);
+
+//- . For Class And # For Id
+//- | For Writing More Content
+//- #{} For Adding Variable
+//- - For Creating variable in direct pug File
+//- mixin reusable Is mixin function that was Used For Create This Function One Time And Used This Function Many Time Like Div Etc

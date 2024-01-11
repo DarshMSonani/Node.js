@@ -1,0 +1,70 @@
+<%- include('../partials/header') %>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active btn-outline-success" aria-current="page" href="/form">Create_New </a>
+          </li>
+          <li class="nav-item" style="padding:0px 4px">
+            <a class="nav-link active btn-outline-secondary" href="/loging">Loging</a>
+          </li>
+        </ul>
+        <form class="d-flex" action="/users/searchdata" method="post">
+          <input class="form-control me-2 " type="search" placeholder="Search By Name" name="name" aria-label="Search">
+          <button class="btn btn-outline-success" style="padding:0px 4px" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Index</th>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Password</th>
+        <th scope="col">Profile_Pic</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <%if(data==undefined||data==null||data.length==0){%>
+      <td><h1 style="color: red;">Data Is Not Found...</h1></td><%}%>
+
+      <%var i=1%>
+      <% for (const value of data) { %>
+        <tr>
+            <th scope="col"><%=i++%></th>
+            <td><%=value.id%></td>
+            <td><%=value.name%></td>
+            <td><%=value.email%></td>
+            <td><%=value.password%></td>
+            <td><img src="uploaded/images/<%=value.profile_pic%>" alt="profile image" width="50px"></td>
+            <td><a href="/users/deletedata?id=<%=value.id%>"><button onclick=" return deletecon()" type="button" class="btn btn-outline-danger">Delete</button></a>
+              <a href="/edit?id=<%=value.id%>"> <button type="button" onclick="return editcon()" class="btn btn-outline-secondary">Edit</button></a>
+            </td>
+            
+          </tr>
+         
+    <% } %>
+    
+    </tbody>
+  </table>
+
+  <script>
+    function deletecon(){
+     return confirm('Are You Sure Want To Delete.')
+    }
+    function editcon(){
+     return confirm('Are You Sure Want To Edit Details.')
+    }
+  </script>
+  
+  
+
+<%- include('../partials/footer') %>
