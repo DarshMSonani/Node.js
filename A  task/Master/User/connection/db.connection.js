@@ -11,5 +11,4 @@ const mongooseCon = () => {
             console.log("The Err Of Mongodb Connection Is ", err);
         });
 };
-
 module.exports = mongooseCon;

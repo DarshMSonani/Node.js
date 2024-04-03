@@ -34,3 +34,19 @@ app.get("/insert", async function (req, res) {
     data.save()
     res.status(200).send({ "data": data })
 })
+
+app.get("/update", async function (req, res) {
+
+    let data = await User.findByIdAndUpdate(req.query.id, { name: req.query.name });
+    res.status(200).send(data);
+})
+
+app.get("/read", async function (req, res) {
+    let data = await User.find();
+    res.status(200).send({ "data": data })
+})
+
+app.get("/delete", async function (req, res) {
+    let data = await User.findByIdAndDelete(req.query.id);
+    res.status(200).send(data)
+})

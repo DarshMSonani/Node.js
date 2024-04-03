@@ -1,8 +1,4 @@
-require("dotenv").config();
-
 const express = require("express");
-const multer = require("multer");
-const upload = multer();
 const app = express();
 const mongooseCon = require("./connection/db.connection");
 
@@ -11,7 +7,6 @@ const userRoutes = require("./routes/user.routes");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(upload.any())
 mongooseCon();
 
 

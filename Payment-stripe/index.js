@@ -22,45 +22,66 @@ app.get("/", async (req, res) => {
     }
 });
 
-app.post("/payment", async (req, res) => {
+app.get("/payment", async (req, res) => {
     try {
-        stripe.customers.create({
-            email: req.body.stripeEmail,
-            source: req.body.stripeToken,
-            name: 'Shirt',
-            address: {
-                line1: 'TC 9/4 Old MES colony',
-                postal_code: '110092',
-                city: 'New Delhi',
-                state: 'Delhi',
-                country: 'India',
-            }
-        })
-            .then((customer) => {
-                console.log(customer);
-                // return stripe.charges.create({
-                //     amount: 7000, // Charing Rs 25
-                //     description: 'Web Development Product',
-                //     currency: 'USD',
-                //     customer: customer.id
-                // });
-                return stripe.PaymentIntent.create(
-                    {
-                        customer: customer.id,
-                        amount: 7000,
-                        description: 'Rails Stripe transaction',
-                        currency: 'usd',
-                    }
-                )
-            })
-            .then(() => {
-                // console.log(PaymentIntent);
-                res.send("Success") // If no error occurs
-            })
-            .catch((err) => {
-                console.log(err);
-                res.send(err) // If some error occurs
-            });
+
+
+        const customer = await stripe.customers.create({
+            name: 'Jenny Rosen',
+            email: 'jennyrosen@example.com',
+        });
+        console.log('customer =====:>> ', customer);
+
+
+
+        // stripe.customers.create({
+        //     email: req.body.stripeEmail,
+        //     source: req.body.stripeToken,
+        //     name: 'Shirt',
+        //     address: {
+        //         line1: 'TC 9/4 Old MES colony',
+        //         postal_code: '110092',
+        //         city: 'New Delhi',
+        //         state: 'Delhi',
+        //         country: 'India',
+        //     }
+        // })
+        // .then((customer) => {
+        //     console.log(customer);
+        //     return stripe.charges.create({
+        //         amount: 7000, // Charing Rs 25
+        //         description: 'Web Development Product',
+        //         currency: 'USD',
+        //         customer: customer.id
+        //     });
+        //     // return stripe.PaymentIntent.create(
+        //     //     {
+        //     //         customer: customer.id,
+        //     //         amount: 7000,
+        //     //         description: 'Rails Stripe transaction',
+        //     //         currency: 'usd',
+        //     //     }
+        //     // )
+        // })
+        // .then(() => {
+        //     // console.log(PaymentIntent);
+        //     res.send("Success") // If no error occurs
+        // })
+        // .catch((err) => {
+        //     console.log(err);
+        //     res.send(err) // If some error occurs
+        // });
+        // const session = await stripe.checkout.sessions.create({
+        //     line_items: [
+        //         {
+        //             // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+        //             price: 25,
+        //             quantity: 1,
+        //         },
+        //     ],
+        //     mode: 'payment',
+        // });
+        // console.log(session);
     } catch (err) {
         console.log("The err of payment is", err);
     }
