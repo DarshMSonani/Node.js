@@ -1,0 +1,17 @@
+match,1
+lookup,1
+graphlookup,
+group,1 create a group
+project,1
+unwind,1 Break the array and give value one by one
+sort,1 Use to sort the data
+skip,1 skips the first 5 documents passed to it by the pipeline
+addfileds,1
+size,1 it give particular give numner array element
+attributes(sum,multiplay,perserntage etc)
+image in db was come but not url
+documnet root
+
+git push -u origin main
+git branch -M main
+ git commit -m "yes"

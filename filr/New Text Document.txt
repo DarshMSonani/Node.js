@@ -1,0 +1,28 @@
+return fetch("http://localhost:3001/api/videos")
+
+app.use("/Your Rout Name",express.static(join(process.cwd(), "public)))
+
+    <!-- <%= %> For Single Variable -->
+    <!-- <%- %> For Arry And Object -->
+    <!-- <% %> For Loops -->
+
+
+// Fetch image function from api
+function fetchPics(){
+    let catsImgDiv = document.querySelector(".catsImgDiv")
+    catsImgDiv.innerHTML='';
+    fetch("https://dog.ceo/api/breeds/image/random") .then(
+    (response)=>
+     response.json()
+    )
+    .then ((data) => { 
+        let catsImgUrl=data.message;
+        let catImgEl = document.createElement("img")
+        catImgEl.setAttribute('src',`${catsImgUrl}`)
+        catImgEl.classList.add("showcase")
+        let catsImgDiv = document.querySelector(".catsImgDiv")
+        catsImgDiv.appendChild(catImgEl);
+    })
+    .catch (err=>console.log(err))
+}
+fetchPics();
